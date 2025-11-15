@@ -1,0 +1,89 @@
+.hero {
+  position: relative;
+  height: 200vh;
+  width: 100%;
+  background: url("../assets/images/hero.jpg") center/cover no-repeat;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  top: 0;
+  left: 0;
+}
+
+.hero-slide {
+  position: relative;
+  text-align: center;
+  height: max-content;
+  color: white;
+  z-index: 5;
+}
+
+.slide-1 {
+  padding: 400px 0;
+}
+
+.hero-title {
+  font-size: 6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.scroll-icon {
+  margin: 60px auto 0 auto;
+  width: 26px;
+  height: 45px;
+  border: 2px solid white;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 6px;
+  opacity: 0.8;
+}
+
+.scroll-icon span {
+  width: 5px;
+  height: 10px;
+  background: white;
+  border-radius: 50px;
+}
+
+.slide-2{
+  margin: 0 auto;
+  max-width: 45%;
+}
+
+.hero-year{
+  height: 80px;
+  width: 80px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 100%;
+  color: rgb(3, 0, 61);
+  font-size: larger;
+  font-weight: 700;
+}
+
+.hero-title-2 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.hero-text{
+    font-size: 1.4rem;
+  font-weight: 400;
+}
