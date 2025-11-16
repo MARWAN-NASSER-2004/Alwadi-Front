@@ -8,4 +8,5 @@ body {
   font-family: "Poppins", sans-serif;
   background: #fff;
   color: #222;
+  position: relative;
 }
