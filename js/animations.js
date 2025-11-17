@@ -6,7 +6,7 @@ let tl = gsap.timeline({
     start: "top",
     end: "bottom bottom",
     scrub: true,
-    pinSpacing: true,
+    pinSpacing: false,
     snap: {
       snapTo: [0, 0.3, 1],
       duration: 0.6,
@@ -66,39 +66,120 @@ tl.to(
 ScrollTrigger.create({
   trigger: ".Progress",
   start: "top top",
+  end: "+=100%",
   pin: true,
   pinSpacing: false,
 });
 
-gsap.timeline({
-  scrollTrigger: {
-    trigger: "#hero",
-    start: "bottom bottom",
-    end: "bottom top",
-    scrub: true,
-    pinSpacing: false,
-    snap: {
-      snapTo: 1,
-      duration: 0.5,
-      ease: "power1.out",
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: "#hero",
+      start: "bottom bottom",
+      end: "bottom top",
+      scrub: true,
+      pinSpacing: false,
+      snap: {
+        snapTo: 1,
+        duration: 0.5,
+        ease: "power1.out",
+      },
     },
+  })
+  .to(".Progress", {
+    pin: false,
+  });
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ------------------------------------------
+
+const steps = document.querySelectorAll(".progress-step");
+const totalSteps = steps.length;
+
+let progressTL = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".Progress",
+    start: "1% top",
+    end: "bottom bottom",
+    pin: false,
+    scrub: true,
+    snap: 1 / (totalSteps - 1),
   },
 });
 
-const steps = document.querySelectorAll(".progress-step");
+// Initialize first step
+(function initFirstStep() {
+  updateContent(0);
+})();
 
-steps.forEach((step, i) => {
-  ScrollTrigger.create({
-    trigger: ".Progress",
-    start: `${(i / steps.length) * 100}% top`,
-    end: `${((i + 1) / steps.length) * 100}% top`,
-    onEnter: () => updateStep(step),
-    onEnterBack: () => updateStep(step),
-  });
-});
+// Global update function
+function updateContent(i) {
+  const current = steps[i];
+  const prev = steps[i - 1] || null;
+  const next = steps[i + 1] || null;
 
-function updateStep(step) {
-  document.querySelector(".year").innerText = step.dataset.year;
-  document.querySelector(".title").innerText = step.dataset.title;
-  document.querySelector(".text").innerText = step.dataset.text;
+  // Update year + main title/text
+  document.querySelector(".year").innerText = current.dataset.year;
+  document.querySelector(".title").innerText = current.dataset.title;
+  document.querySelector(".text").innerText = current.dataset.text;
+
+  // ACTIVE
+  document.querySelector(".slot.active").innerHTML = `
+    <h2>${current.dataset.title}</h2>
+    <p>${current.dataset.text}</p>
+  `;
+
+  // PREV
+  if (prev) {
+    document.querySelector(".slot.prev").innerHTML = `
+      <h2>${prev.dataset.title}</h2>
+      <p>${prev.dataset.text}</p>
+    `;
+    document.querySelector(".slot.prev").style.opacity = "0.3";
+  } else {
+    document.querySelector(".slot.prev").style.opacity = "0";
+  }
+
+  // NEXT
+  if (next) {
+    document.querySelector(".slot.next").innerHTML = `
+      <h2>${next.dataset.title}</h2>
+      <p>${next.dataset.text}</p>
+    `;
+    document.querySelector(".slot.next").style.opacity = "0.3";
+  } else {
+    document.querySelector(".slot.next").style.opacity = "0";
+  }
 }
+
+// Build GSAP timeline
+steps.forEach((step, i) => {
+  let label = `step-${i}`;
+
+  // Move to label
+  progressTL.add(label);
+
+  // Update all content exactly at this step
+  progressTL.add(() => updateContent(i));
+
+  // Animate out
+  progressTL.to(
+    [".title", ".text"],
+    { opacity: 0, y: -30, duration: 0.3 },
+    label
+  );
+
+  // Animate in
+  progressTL.fromTo(
+    ".title",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 0.4 }
+  );
+
+  progressTL.fromTo(
+    ".text",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 0.4 }
+  );
+});
