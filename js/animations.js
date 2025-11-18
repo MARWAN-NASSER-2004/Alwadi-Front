@@ -26,14 +26,14 @@ gsap.to(".scroll-icon span", {
 tl.to(
   ".hero-title",
   {
-    fontSize: "1.5rem",
+    fontSize: "clamp(1rem, 3vw, 1.5rem)",
     fontWeight: 200,
   },
   "step1"
 ).to(
   ".hero-subtitle",
   {
-    fontSize: "4rem",
+    fontSize: "clamp(1.5rem, 6vw, 4rem)",
     fontWeight: 700,
   },
   "step1"
@@ -190,31 +190,30 @@ overlaytl
   .to(".overlay-section", { opacity: 1, duration: 0.3 })
   .to(".progress-bg", {
     scale: 1.1,
+    duration: 2,
   })
-  .to(".overlay-line", {
-    height: "100vh", // يصبح ممتد على الشاشة
-    duration: 1,
-    ease: "power2.inOut",
-  })
-
-  // الآن يبدأ الخط يتوسع ليغطي الشاشة
+  .to(
+    ".overlay-line",
+    {
+      height: "100vh",
+      duration: 1,
+      ease: "power2.inOut",
+    },
+    "-=.7"
+  )
   .to(".overlay-line", {
     width: "100vw",
     height: "100vh",
     duration: 1,
     ease: "power2.inOut",
   })
-  .to(".overlay-images img", {
-    scale: 1,
-    opacity: 1,
-    duration: 1,
-    stagger: 0.4,
-    ease: "power2.out",
-  })
-  .to(".overlay-final", {
-    scale: 1,
-    opacity: 1,
-    duration: 1,
-    stagger: 0.4,
-    ease: "power2.out",
-  });
+  .to(
+    ".overlay-images img,.overlay-final",
+    {
+      scale: 1,
+      duration: 1.2,
+      stagger: 0.3,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  );

@@ -10,3 +10,10 @@ body {
   color: #222;
   position: relative;
 }
+
+:root {
+  --fs-small: clamp(0.9rem, 2vw, 1.2rem);
+  --fs-base: clamp(1rem, 2.4vw, 1.6rem);
+  --fs-title: clamp(1.8rem, 4vw, 3rem);
+  --fs-big-title: clamp(3rem, 8vw, 6rem);
+}

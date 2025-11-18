@@ -18,32 +18,32 @@
 
 .fixed-content {
   position: sticky;
-  top: 10%;
+  top: 15%;
   text-align: center;
   color: white;
   z-index: 100;
 }
 
 .trip{
-  font-size: 2rem;
+  font-size: clamp(1rem, 4vw, 2rem);
   font-weight: 700;
   margin-bottom: 50px;
 }
 
 .year {
-  font-size: 9rem;
+  font-size: clamp(5rem, 10vw, 9rem);
+  letter-spacing: clamp(5px, 4vw, 40px);
   font-weight: 800;
-  letter-spacing: 40px;
   opacity: 0.6;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 4vw, 3rem);
   margin-top: 20px;
 }
 
 .text {
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 3vw, 1.6rem);
   margin-top: 10px;
   opacity: 0.8;
 }
