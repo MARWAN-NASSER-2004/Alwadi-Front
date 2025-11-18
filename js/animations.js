@@ -66,31 +66,25 @@ tl.to(
 ScrollTrigger.create({
   trigger: ".Progress",
   start: "top top",
-  end: "+=100%",
+  end: "+=62%",
   pin: true,
   pinSpacing: false,
 });
 
-gsap
-  .timeline({
-    scrollTrigger: {
-      trigger: "#hero",
-      start: "bottom bottom",
-      end: "bottom top",
-      scrub: true,
-      pinSpacing: false,
-      snap: {
-        snapTo: 1,
-        duration: 0.5,
-        ease: "power1.out",
-      },
+gsap.timeline({
+  scrollTrigger: {
+    trigger: "#hero",
+    start: "bottom bottom",
+    end: "bottom top",
+    scrub: true,
+    pinSpacing: false,
+    snap: {
+      snapTo: 1,
+      duration: 0.5,
+      ease: "power1.out",
     },
-  })
-  .to(".Progress", {
-    pin: false,
-  });
-
-gsap.registerPlugin(ScrollTrigger);
+  },
+});
 
 // ------------------------------------------
 
@@ -100,37 +94,32 @@ const totalSteps = steps.length;
 let progressTL = gsap.timeline({
   scrollTrigger: {
     trigger: ".Progress",
-    start: "1% top",
+    start: "5% top",
     end: "bottom bottom",
     pin: false,
     scrub: true,
-    snap: 1 / (totalSteps - 1),
+    snap: {
+      snapTo: [0, 0.18, 0.37, 0.57, 0.76, 1],
+      duration: 2,
+      delay: 0,
+    },
   },
 });
 
-// Initialize first step
-(function initFirstStep() {
-  updateContent(0);
-})();
-
-// Global update function
 function updateContent(i) {
   const current = steps[i];
   const prev = steps[i - 1] || null;
   const next = steps[i + 1] || null;
 
-  // Update year + main title/text
   document.querySelector(".year").innerText = current.dataset.year;
   document.querySelector(".title").innerText = current.dataset.title;
   document.querySelector(".text").innerText = current.dataset.text;
 
-  // ACTIVE
   document.querySelector(".slot.active").innerHTML = `
     <h2>${current.dataset.title}</h2>
     <p>${current.dataset.text}</p>
   `;
 
-  // PREV
   if (prev) {
     document.querySelector(".slot.prev").innerHTML = `
       <h2>${prev.dataset.title}</h2>
@@ -141,7 +130,6 @@ function updateContent(i) {
     document.querySelector(".slot.prev").style.opacity = "0";
   }
 
-  // NEXT
   if (next) {
     document.querySelector(".slot.next").innerHTML = `
       <h2>${next.dataset.title}</h2>
@@ -153,33 +141,80 @@ function updateContent(i) {
   }
 }
 
-// Build GSAP timeline
 steps.forEach((step, i) => {
   let label = `step-${i}`;
-
-  // Move to label
-  progressTL.add(label);
-
-  // Update all content exactly at this step
   progressTL.add(() => updateContent(i));
 
-  // Animate out
+  progressTL.add(label);
+
+  let translateside = "-20%";
+  if (i % 2 === 0) {
+    translateside = "20%";
+  } else if (i === 0) {
+    translateside = 0;
+  }
+
   progressTL.to(
     [".title", ".text"],
-    { opacity: 0, y: -30, duration: 0.3 },
+    { opacity: 0.3, y: -600, x: translateside, duration: 0.8 },
     label
   );
 
-  // Animate in
   progressTL.fromTo(
     ".title",
     { opacity: 0, y: 40 },
-    { opacity: 1, y: 0, duration: 0.4 }
+    { opacity: 1, y: 0, duration: 1 }
   );
 
   progressTL.fromTo(
     ".text",
     { opacity: 0, y: 40 },
-    { opacity: 1, y: 0, duration: 0.4 }
+    { opacity: 1, y: 0, duration: 1 }
   );
 });
+
+// ------------------------------
+
+let overlaytl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".Progress",
+    start: "bottom bottom",
+    end: "bottom top",
+    scrub: true,
+    pin: true,
+    pinSpacing: false,
+  },
+});
+
+overlaytl
+  .to(".overlay-section", { opacity: 1, duration: 0.3 })
+  .to(".progress-bg", {
+    scale: 1.1,
+  })
+  .to(".overlay-line", {
+    height: "100vh", // يصبح ممتد على الشاشة
+    duration: 1,
+    ease: "power2.inOut",
+  })
+
+  // الآن يبدأ الخط يتوسع ليغطي الشاشة
+  .to(".overlay-line", {
+    width: "100vw",
+    height: "100vh",
+    duration: 1,
+    ease: "power2.inOut",
+  })
+  .to(".overlay-images img", {
+    scale: 1,
+    opacity: 1,
+    duration: 1,
+    stagger: 0.4,
+    ease: "power2.out",
+  })
+  .to(".overlay-final", {
+    scale: 1,
+    opacity: 1,
+    duration: 1,
+    stagger: 0.4,
+    ease: "power2.out",
+  });

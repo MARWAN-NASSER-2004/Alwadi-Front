@@ -1,6 +1,6 @@
 .Progress {
   position: relative;
-  height: 300vh;
+  height: 225vh;
   overflow: hidden;
   bottom: 100vh;
   width: 100%;
@@ -60,14 +60,12 @@
   pointer-events: none;
 }
 
-/* Container */
 .progress-display {
   position: relative;
   width: 100%;
   height: 100vh;
 }
 
-/* GENRAL SLOT STYLE */
 .slot {
   position: fixed;
   color: white;
@@ -78,7 +76,6 @@
   pointer-events: none;
 }
 
-/* ACTIVE CENTER */
 .slot.active {
   top: 50%;
   left: 50%;
@@ -87,7 +84,6 @@
   text-align: center;
 }
 
-/* PREVIOUS — top-left */
 .slot.prev {
   top: 8%;
   left: 6%;
@@ -96,7 +92,6 @@
   text-align: left;
 }
 
-/* NEXT — bottom-right */
 .slot.next {
   bottom: 8%;
   right: 6%;
@@ -105,7 +100,6 @@
   text-align: right;
 }
 
-/* Titles styling */
 .slot h2 {
   font-size: 1.6rem;
   margin-bottom: 5px;
