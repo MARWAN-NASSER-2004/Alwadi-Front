@@ -216,4 +216,63 @@ overlaytl
       ease: "power2.out",
     },
     "-=0.5"
+  )
+  .to(".final-left", {
+    x: "110%",
+    duration: 1.5,
+    ease: "power2.inOut",
+  })
+  .to(
+    ".final-right",
+    {
+      x: "-110%",
+      duration: 1.5,
+      ease: "power2.inOut",
+    },
+    "<"
+  )
+  .to(
+    ".split-div",
+    {
+      left: 0,
+      right: 0,
+      duration: 1.5,
+      ease: "power2.inOut",
+    },
+    "<"
   );
+
+gsap.to(".member-2", {
+  scrollTrigger: {
+    trigger: ".member-1",
+    start: "center bottom",
+    toggleActions: "play none none reverse",
+  },
+  opacity: 1,
+  y: 0,
+  duration: 1,
+  ease: "power3.out",
+});
+
+gsap.to(".member-3", {
+  scrollTrigger: {
+    trigger: ".member-2",
+    start: "center bottom",
+    toggleActions: "play none none reverse",
+  },
+  opacity: 1,
+  x: 0,
+  duration: 1,
+  ease: "power3.out",
+});
+
+gsap.to(".board-members", {
+  scrollTrigger: {
+    trigger: ".member-2",
+    start: "center bottom",
+    toggleActions: "play none none reverse",
+  },
+  x: 0,
+  duration: 2,
+  ease: "power3.out",
+});

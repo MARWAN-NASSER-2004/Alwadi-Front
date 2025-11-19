@@ -10,7 +10,7 @@
   align-items: center;
   pointer-events: none;
   opacity: 0;
-  z-index: 999;
+  z-index: 100;
 }
 
 .overlay-line {
@@ -53,21 +53,68 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-mask {
+  display: flex;
+}
+
+.final-left .final-content{
+  transform: translateX(-50%);
+}
+
+.final-right .final-content{
+  transform: translateX(50%);
+}
+
+.final-left .spliter{
+  position: absolute;
+  inset: 0 50% 0 0;
+  background-color: white;
+  opacity: 0;
+}
+
+.final-right .spliter{
+  position: absolute;
+  inset: 0 0 0 50%;
+  background-color: white;
+  opacity: 0;
+}
+
+.final-left,
+.final-right {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.split-div{
+  position: absolute;
+  inset: 0 50% 0 50%;
+  background-color:  #d9f2ff;
 }
 
 .overlay-final h2 {
-  font-size: 4rem;
+  font-size: clamp(2rem, 5vw, 4rem);
   margin-bottom: 1rem;
   color: white;
 }
 
 .overlay-final p {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 3vw, 1.3rem);
   line-height: 1.8;
-  max-width: 40%;
+  max-width: 80%;
+  margin: 0 auto;
   color: white;
 }
 
 .overlay-trigger {
-  height: 150vh;
+  height: 30vh;
+}
+
+@media (max-width: 670px) {
+  .overlay-final p {
+    max-width: 75%;
+  }
 }
