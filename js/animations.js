@@ -131,7 +131,7 @@ function updateContent(i) {
   } else if (i == 2) {
     progressTL.to(
       ".step-1",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -500 },
+      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -700 },
       "step-1"
     );
     progressTL.to(
@@ -152,7 +152,7 @@ function updateContent(i) {
   } else if (i == 3) {
     progressTL.to(
       ".step-2",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -650, x: 0 },
+      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -850, x: 0 },
       "step-1"
     );
     progressTL.to(
@@ -357,11 +357,12 @@ gsap.to(".faq-section", {
   scrollTrigger: {
     trigger: ".faq-section",
     start: "top bottom",
+    end:"+=500%",
     scrub: true,
     pin: true,
     pinSpacing: false,
     snap: {
-      snapTo: [0,0.4, 1],
+      snapTo: [0, 0.4, 1],
       duration: 1.8,
       delay: 0,
     },
@@ -372,7 +373,7 @@ gsap.to(".faq-section", {
 
 ScrollTrigger.create({
   trigger: ".footer",
-  start: "top top",
+  start: "bottom bottom",
   pin: true,
   pinSpacing: false,
 });
