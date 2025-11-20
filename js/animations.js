@@ -115,29 +115,29 @@ function updateContent(i) {
   document.querySelector(".title").innerText = current.dataset.title;
   document.querySelector(".text").innerText = current.dataset.text;
 
-  document.querySelector(".slot.active").innerHTML = `
+  document.querySelector(".step.active").innerHTML = `
     <h2>${current.dataset.title}</h2>
     <p>${current.dataset.text}</p>
   `;
 
   if (prev) {
-    document.querySelector(".slot.prev").innerHTML = `
+    document.querySelector(".step.prev").innerHTML = `
       <h2>${prev.dataset.title}</h2>
       <p>${prev.dataset.text}</p>
     `;
-    document.querySelector(".slot.prev").style.opacity = "0.3";
+    document.querySelector(".step.prev").style.opacity = "0.3";
   } else {
-    document.querySelector(".slot.prev").style.opacity = "0";
+    document.querySelector(".step.prev").style.opacity = "0";
   }
 
   if (next) {
-    document.querySelector(".slot.next").innerHTML = `
+    document.querySelector(".step.next").innerHTML = `
       <h2>${next.dataset.title}</h2>
       <p>${next.dataset.text}</p>
     `;
-    document.querySelector(".slot.next").style.opacity = "0.3";
+    document.querySelector(".step.next").style.opacity = "0.3";
   } else {
-    document.querySelector(".slot.next").style.opacity = "0";
+    document.querySelector(".step.next").style.opacity = "0";
   }
 }
 
@@ -236,7 +236,7 @@ overlaytl
     {
       left: 0,
       right: 0,
-      duration: 1.5,
+      duration: 1.47,
       ease: "power2.inOut",
     },
     "<"
@@ -275,4 +275,70 @@ gsap.to(".board-members", {
   x: 0,
   duration: 2,
   ease: "power3.out",
+});
+
+gsap.to(".logo-bar", {
+  scrollTrigger: {
+    trigger: ".logo-bar",
+    start: "top bottom",
+    toggleActions: "play none none reverse",
+    snap: {
+      snapTo: [0, 0.25, 1],
+      duration: 1,
+      delay: 0,
+    },
+  },
+  x: 0,
+  duration: 0.8,
+  ease: "power2.out",
+});
+
+// ----------------------------
+
+ScrollTrigger.create({
+  trigger: ".certificates-section",
+  start: "bottom bottom",
+  pin: true,
+  pinSpacing: false,
+});
+
+let overlayfactory = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".factory-section",
+    start: "top top",
+    scrub: true,
+    pin: true,
+    pinSpacing: false,
+  },
+});
+
+overlayfactory.to(
+  ".factory-section > div:nth-child(2),.factory-section > div:nth-child(3),.factory-section > div:last-child ",
+  {
+    scale: 1,
+    duration: 1.2,
+    stagger: 0.6,
+    ease: "power2.out",
+  }
+).to(".faq-section", {
+  y: "-100vh",
+  duration: 0.8,
+  ease: "power2.out",
+});
+
+gsap.to(".faq-section", {
+  scrollTrigger: {
+    trigger: ".faq-section",
+    start: "top bottom",
+    end: "top top",
+    end: "+=100%",
+    scrub: true,
+    pin: true,
+    pinSpacing: false,
+    snap: {
+      snapTo: [0, 0.99],
+      duration: 0.8,
+      delay: 0,
+    },
+  },
 });
