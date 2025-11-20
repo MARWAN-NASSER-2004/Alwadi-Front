@@ -62,54 +62,10 @@
 
 .progress-display {
   position: absolute;
+  overflow: hidden;
   inset: 0;
   width: 100%;
   height: 100vh;
-}
-
-/* .slot {
-  position: fixed;
-  color: white;
-  max-width: 300px;
-  transition: all 0.5s ease;
-  opacity: 0;
-  transform: scale(0.8);
-  pointer-events: none;
-} */
-
-.step {
-  position: fixed;
-  color: white;
-  max-width: 300px;
-  transition: all 0.5s ease;
-  opacity: 0;
-  transform: scale(0.8);
-  pointer-events: none;
-  z-index: 200;
-}
-
-.step.active {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-  text-align: center;
-}
-
-.step.prev {
-  top: 8%;
-  left: 6%;
-  opacity: 0.4;
-  transform: translate(0, 0) scale(0.75);
-  text-align: left;
-}
-
-.step.next {
-  bottom: 8%;
-  right: 6%;
-  opacity: 0.4;
-  transform: translate(0, 0) scale(0.75);
-  text-align: right;
 }
 
 .step h2 {
@@ -120,4 +76,53 @@
 .step p {
   font-size: 1rem;
   opacity: 0.8;
+}
+
+.step-1 {
+  transition-duration: 1s;
+  animation-duration: 1s;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  scale: 1.5;
+  position: absolute;
+  inset: auto 0;
+  top: 38%;
+}
+
+.step-2 {
+  transition-duration: 1s;
+  animation-duration: 1s;
+  position: absolute;
+  bottom: 30%;
+  right: 20%;
+  opacity: 0.4;
+}
+
+.step-3 {
+  transition-duration: 1s;
+  animation-duration: 1s;
+  position: absolute;
+  bottom: -30%;
+  left: 20%;
+  opacity: 0;
+}
+.step-4 {
+  transition-duration: 1s;
+  animation-duration: 1s;
+  position: absolute;
+  bottom: -60%;
+  right: 20%;
+  opacity: 0;
+}
+.step-5 {
+  transition-duration: 1s;
+  animation-duration: 1s;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  scale: 1.5;
+  position: absolute;
+  inset: auto 0;
+  top: 90%;
 }

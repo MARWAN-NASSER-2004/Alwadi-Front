@@ -71,6 +71,10 @@
 }
 
 @media (max-width: 670px) {
+  .system-content {
+    max-width: 85%;
+    margin: 0 auto;
+  }
   .member {
     width: 80%;
   }
