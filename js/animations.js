@@ -162,7 +162,7 @@ function updateContent(i) {
     );
     progressTL.to(
       ".step-4",
-      { scale: 1.5, opacity: 1, duration: 0.6, y: -1050, x: -50 },
+      { scale: 1.5, opacity: 1, duration: 0.6, y: -900, x: 30 },
       "step-1"
     );
     progressTL.to(
@@ -178,7 +178,7 @@ function updateContent(i) {
     );
     progressTL.to(
       ".step-4",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -1150, x: -50 },
+      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -1150, x: 30 },
       "step-1"
     );
     progressTL.to(
@@ -357,15 +357,10 @@ gsap.to(".faq-section", {
   scrollTrigger: {
     trigger: ".faq-section",
     start: "top bottom",
-    end:"+=500%",
+    end: "+=500%",
     scrub: true,
     pin: true,
     pinSpacing: false,
-    snap: {
-      snapTo: [0, 0.4, 1],
-      duration: 1.8,
-      delay: 0,
-    },
   },
 });
 
