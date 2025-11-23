@@ -52,7 +52,7 @@ tl.to(
   "step2"
 )
   .to(
-    [".hero-title", ".hero-subtitle"],
+    [".hero-title", ".hero-subtitle", ".scroll-icon span,.scroll-icon"],
     {
       opacity: 0,
       duration: 0.5,

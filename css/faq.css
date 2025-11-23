@@ -80,6 +80,10 @@
 }
 
 @media (max-width: 600px) {
+  .faq-section {
+    padding-top: 50px;
+  }
+
   .faq-title {
     font-size: 26px;
   }
@@ -89,7 +93,8 @@
   }
 
   .faq-item.active .faq-answer {
-    padding: 65px;
+    padding: 0 15px 75px 15px;
     padding-top: 0;
+    font-size: 12px;
   }
 }

@@ -1,8 +1,19 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector(".mobile-menu");
 
-menuToggle.addEventListener("click", () => {
+menuToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
   mobileMenu.classList.toggle("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (
+    mobileMenu.classList.contains("open") &&
+    !mobileMenu.contains(e.target) &&
+    !menuToggle.contains(e.target)
+  ) {
+    mobileMenu.classList.remove("open");
+  }
 });
 
 // ---------------------------

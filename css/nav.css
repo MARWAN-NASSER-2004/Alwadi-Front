@@ -94,17 +94,19 @@
 
 .mobile-menu {
   position: fixed;
-  top: 0;
-  width: 100%;
   top: -100%;
+  left: 0;
+  width: 100%;
   background: white;
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   text-align: right;
-  transition: right 0.35s ease;
+  transition: top 0.45s ease;
   z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .mobile-menu a {
@@ -115,7 +117,9 @@
 }
 
 .mobile-menu.open {
-  top: 7%;
+  top: 10%;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 @media (max-width: 1024px) {
@@ -141,7 +145,7 @@
   .nav-container {
     padding: 0 0.5rem;
   }
-    .mobile-menu.open {
-    top: 7%;
+  .mobile-menu.open {
+    top: 8%;
   }
 }

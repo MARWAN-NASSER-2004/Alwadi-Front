@@ -69,6 +69,7 @@
 
 .wraped-text {
   max-width: 350px;
+  margin: 0 auto !important;
 }
 
 .copy {
