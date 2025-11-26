@@ -84,7 +84,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  scale: 1.5;
+  scale: 1.5 !important;
   position: absolute;
   inset: auto 0;
   top: 38%;

@@ -101,7 +101,6 @@ let progressTL = gsap.timeline({
     scrub: true,
     snap: {
       snapTo: [0, 0.18, 0.37, 0.57, 0.76, 1],
-      duration: 2,
       delay: 0,
     },
   },
@@ -115,77 +114,65 @@ function updateContent(i) {
   if (i == 1) {
     progressTL.to(
       ".step-1",
-      { scale: 0.5, opacity: 0.5, duration: 0.3, y: -250, x: -400 },
+      { scale: 0.5, opacity: 0.5, y: -250, x: -400 },
       "step-1"
     );
     progressTL.to(
       ".step-2",
-      { scale: 1.5, opacity: 1, duration: 0.3, y: -180, x: -50 },
+      { scale: 1.5, opacity: 1, y: -180, x: -50 },
       "step-1"
     );
     progressTL.to(
       ".step-3",
-      { scale: 0.5, opacity: 0.5, duration: 0.3, y: -500, x: -50 },
+      { scale: 0.5, opacity: 0.5, y: -500, x: -50 },
       "step-1"
     );
   } else if (i == 2) {
-    progressTL.to(
-      ".step-1",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -700 },
-      "step-1"
-    );
+    progressTL.to(".step-1", { scale: 0.5, opacity: 0.5, y: -700 }, "step-1");
     progressTL.to(
       ".step-2",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -450, x: 0 },
+      { scale: 0.5, opacity: 0.5, y: -450, x: 0 },
       "step-1"
     );
     progressTL.to(
       ".step-3",
-      { scale: 1.5, opacity: 1, duration: 0.6, y: -720, x: -50 },
+      { scale: 1.5, opacity: 1, y: -720, x: -50 },
       "step-1"
     );
     progressTL.to(
       ".step-4",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -820, x: -50 },
+      { scale: 0.5, opacity: 0.5, y: -820, x: -50 },
       "step-1"
     );
   } else if (i == 3) {
     progressTL.to(
       ".step-2",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -850, x: 0 },
+      { scale: 0.5, opacity: 0.5, y: -850, x: 0 },
       "step-1"
     );
     progressTL.to(
       ".step-3",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -900, x: -50 },
+      { scale: 0.5, opacity: 0.5, y: -900, x: -50 },
       "step-1"
     );
     progressTL.to(
       ".step-4",
-      { scale: 1.5, opacity: 1, duration: 0.6, y: -900, x: 30 },
+      { scale: 1.5, opacity: 1, y: -900, x: 30 },
       "step-1"
     );
-    progressTL.to(
-      ".step-5",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -200 },
-      "step-1"
-    );
+    progressTL.to(".step-5", { scale: 0.5, opacity: 0.5, y: -200 }, "step-1");
   } else if (i == 4) {
     progressTL.to(
       ".step-3",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -1520, x: -50 },
+      { scale: 0.5, opacity: 0.5, y: -1520, x: -50 },
       "step-1"
     );
     progressTL.to(
       ".step-4",
-      { scale: 0.5, opacity: 0.5, duration: 0.6, y: -1150, x: 30 },
+      { scale: 0.5, opacity: 0.5, y: -1150, x: 30 },
       "step-1"
     );
-    progressTL.to(
-      ".step-5",
-      { scale: 1.5, opacity: 1, duration: 0.6, y: -400 },
-      "step-1"
-    );
+    progressTL.to(".step-5", { scale: 1.5, opacity: 1, y: -400 }, "step-1");
   }
 }
 
@@ -204,7 +191,7 @@ let overlaytl = gsap.timeline({
   scrollTrigger: {
     trigger: ".Progress",
     start: "bottom bottom",
-    end: "bottom top",
+    end: "+=400%",
     scrub: true,
     pin: true,
     pinSpacing: false,
@@ -237,7 +224,7 @@ overlaytl
     {
       scale: 1,
       duration: 1.2,
-      stagger: 0.3,
+      stagger: 0.4,
       ease: "power2.out",
     },
     "-=0.5"
@@ -307,11 +294,6 @@ gsap.to(".logo-bar", {
     trigger: ".logo-bar",
     start: "top bottom",
     toggleActions: "play none none reverse",
-    snap: {
-      snapTo: [0, 0.25, 1],
-      duration: 1,
-      delay: 0,
-    },
   },
   x: 0,
   duration: 0.8,
@@ -331,6 +313,7 @@ let overlayfactory = gsap.timeline({
   scrollTrigger: {
     trigger: ".factory-section",
     start: "top",
+    end: "300%",
     scrub: true,
     pin: true,
     pinSpacing: false,
@@ -357,7 +340,7 @@ gsap.to(".faq-section", {
   scrollTrigger: {
     trigger: ".faq-section",
     start: "top bottom",
-    end: "+=500%",
+    end: "+=400%",
     scrub: true,
     pin: true,
     pinSpacing: false,
