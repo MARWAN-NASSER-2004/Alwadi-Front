@@ -191,7 +191,7 @@ let overlaytl = gsap.timeline({
   scrollTrigger: {
     trigger: ".Progress",
     start: "bottom bottom",
-    end: "+=400%",
+    end: "+=1000%",
     scrub: true,
     pin: true,
     pinSpacing: false,
@@ -223,7 +223,7 @@ overlaytl
     ".overlay-images img,.overlay-final",
     {
       scale: 1,
-      duration: 1.2,
+      duration: 2,
       stagger: 0.4,
       ease: "power2.out",
     },
@@ -313,7 +313,7 @@ let overlayfactory = gsap.timeline({
   scrollTrigger: {
     trigger: ".factory-section",
     start: "top",
-    end: "300%",
+    end: "500%",
     scrub: true,
     pin: true,
     pinSpacing: false,
