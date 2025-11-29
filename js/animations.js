@@ -246,6 +246,7 @@ overlaytl
   .to(
     ".split-div",
     {
+      width:"100%",
       left: 0,
       right: 0,
       duration: 1.47,

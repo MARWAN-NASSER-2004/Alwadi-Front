@@ -98,6 +98,7 @@
   position: absolute;
   inset: 0 50% 0 50%;
   background-color:  #d9f2ff;
+  width: 0;
 }
 
 .overlay-final h2 {

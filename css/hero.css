@@ -1,7 +1,9 @@
 .hero {
   position: relative;
   width: 100%;
-  background: url("../assets/images/hero.jpg") center/cover no-repeat;
+  background: url("../assets/images/top1.png") top / auto 50% no-repeat,
+    url("../assets/images/bottom.png") bottom center / auto 50% no-repeat,
+    url("../assets/images/top2.png") top / auto 80% no-repeat;
   overflow: hidden;
   min-height: 160vh;
   z-index: 5;
@@ -98,7 +100,6 @@
     max-width: 80%;
   }
 }
-
 
 @media (min-width: 1600px) {
   .slide-2 {
